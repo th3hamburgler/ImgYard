@@ -1,0 +1,23 @@
+{
+    "name": "stwt/img-yard",
+    "description": "",
+    "authors": [
+        {
+            "name": "Jim Wardlaw",
+            "email": "jim@stwt.co"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Stwt\\ImgYard": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
