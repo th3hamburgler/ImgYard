@@ -14,10 +14,14 @@
 
 //use Stwt\Beheartofit\Image as Image;
 
-$imageModel;
+$controllers = Config::get('img-yard.controllers');
 
-Route::model('image', 'Image');
-Route::get('img/{image}', 'ImgController@getImage');
+foreach ($controllers as $array) {
+    $uri = $array['uri'];
+    $model = $array['model'];
+    $_model = 'img_yard_'.strtolower($model);
+    $controller = $array['controller'];
 
-Route::model('tile', 'Tile');
-Route::get('tile/{tile}', 'TileController@getImage');
+    Route::model($_model, $model);
+    Route::get($uri.'/{'.$_model.'}', $controller.'@getImage');
+}
