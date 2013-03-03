@@ -16,5 +16,8 @@
 
 $imageModel;
 
-Route::model('image', 'Stwt\Beheartofit\Image');
-Route::get('img/{image}', 'Stwt\ImgYard\ImgYardController@getImage');
+Route::model('image', 'Image');
+Route::get('img/{image}', 'ImgController@getImage');
+
+Route::model('tile', 'Tile');
+Route::get('tile/{tile}', 'TileController@getImage');
