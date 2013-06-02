@@ -9,11 +9,11 @@ class ImgYardController extends Controller
     private $headers = ['Content-type' => 'image/png'];
     private $image;
 
-    public function getImage($image)
+    public function getImage($imageId, $size = null)
     {
-        $this->image = $image;
+        $image = \Image::find($imageId);
 
-        $width  = Input::get('w');
+        /*$width  = Input::get('w');
         $height = Input::get('h');
 
         if ($width && $height) {
@@ -26,9 +26,11 @@ class ImgYardController extends Controller
             return $this->resizeImageByWidth($width);
         } elseif ($height) {
             return $this->resizeImageByHeight($height);
-        }
+        }*/
 
-        return Response::make($this->image->getUrl($name), 200, $headers);
+        $data = $image->getFile($size);
+
+        return Response::make($data, 200, $this->headers);
     }
 
     private function thumbnailImage($width, $height)
