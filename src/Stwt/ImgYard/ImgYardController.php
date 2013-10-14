@@ -8,10 +8,12 @@ class ImgYardController extends Controller
 {
     private $headers = ['Content-type' => 'image/png'];
     private $image;
+    protected $model = 'Image';
 
     public function getImage($imageId, $size = null)
     {
-        $image = \Image::find($imageId);
+        $model = $this->model;
+        $image = $model::find($imageId);
 
         /*$width  = Input::get('w');
         $height = Input::get('h');
